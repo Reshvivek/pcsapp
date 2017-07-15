@@ -24,7 +24,6 @@ class LoginView: UIView{
     
         func loginVuProperties() -> UIView{
             
-   
             //loginVu.backgroundColor = UIColor.orange
             
             loginVu.addSubview(usernameTextFieldProperties())

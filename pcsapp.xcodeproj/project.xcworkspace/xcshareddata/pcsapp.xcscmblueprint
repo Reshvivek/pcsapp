@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CC14FE8DDF5C80C0FA0BC3B347ADDB03AB91DBA6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DC8F46694E586F3E7FFA79AE8FFBCDE17C75A99B" : 9223372036854775807,
+    "CC14FE8DDF5C80C0FA0BC3B347ADDB03AB91DBA6" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0321908E-9D32-4BF6-95AA-9DCE71976234",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DC8F46694E586F3E7FFA79AE8FFBCDE17C75A99B" : "",
+    "CC14FE8DDF5C80C0FA0BC3B347ADDB03AB91DBA6" : "pcsapp\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "pcsapp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "pcsapp.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ycPlayground\/pcsapp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CC14FE8DDF5C80C0FA0BC3B347ADDB03AB91DBA6"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/patienceapp\/patienceappios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DC8F46694E586F3E7FFA79AE8FFBCDE17C75A99B"
+    }
+  ]
+}
