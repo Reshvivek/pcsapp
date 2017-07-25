@@ -6,18 +6,9 @@
 //  Copyright © 2017 Yalla Code. All rights reserved.
 //
 
-
-/*
-
- values to copy
- 
-rgb(31,127,113)    for green backgrounds.
-
-*/
-
 import UIKit
 
-class LoginView: UIView{
+struct LoginView{
     
     
     let loginVu: UIView = UIView()

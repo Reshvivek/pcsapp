@@ -8,23 +8,16 @@
 
 import UIKit
 
-class CreateNewUserVC: UIViewController{
+class CreateNewUserVC: UIViewController, UIScrollViewDelegate{
 
     private let instanceOfCreateNewUserView = CreateNewUserView()
-    
     
         override func loadView(){
         
             super.loadView()
             
-            view.addSubview(instanceOfCreateNewUserView.createNewUserVuLayout())
-            
-            instanceOfCreateNewUserView.centerTheVu(superVuX: view.center.x)
-            
-            instanceOfCreateNewUserView.center.y = view.center.y
-            
-            
-        }
-
-
+            view.addSubview(instanceOfCreateNewUserView.layoutScrollView())
+//            instanceOfCreateNewUserView.newUserInfoBox.isHidden = true
+    }
+        
 }

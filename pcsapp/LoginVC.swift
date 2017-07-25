@@ -11,15 +11,15 @@ import UIKit
 class LoginVC: UIViewController{
     
 
-    private let instanceOfLoginVu = LoginView()
+    private let instanceOfLoginVu = LoginView().loginVuProperties()
     
     override func loadView() {
         super.loadView()
         
         
-        instanceOfLoginVu.loginVu.frame = CGRect(x:0, y:view.bounds.minY+22, width:view.bounds.width, height:view.bounds.height)
+        instanceOfLoginVu.frame = CGRect(x:0, y:view.bounds.minY+22, width:view.bounds.width, height:view.bounds.height)
         
-            view.addSubview(instanceOfLoginVu.loginVuProperties())
+            view.addSubview(instanceOfLoginVu)
     }
  
 

@@ -8,122 +8,70 @@
 
 import UIKit
 
-class CreateNewUserView: UIView{
+struct CreateNewUserView{
     
-    private let subVu: UIView! = UIView()
+    var someScrollView: UIScrollView! = UIScrollView()
+    
+    func layoutScrollView() -> UIScrollView {
+    
+        someScrollView.frame.size = CGSize(width:330, height:800)
+        someScrollView.frame.origin = CGPoint(x:0, y:20)
+        someScrollView.backgroundColor = UIColor.clear
+        someScrollView.contentSize = CGSize(width:300, height:1800)
+        someScrollView.addSubview(layoutNewUserInfoBox())
+        return someScrollView
+    }
 
-        func createNewUserVuLayout() -> UIView{
-            
+    
+    let newUserInfoBox: UIView! = UIView()   // <-- the container subview surrounding controls, and is a subview of the scrollview above
+    
+    func layoutNewUserInfoBox() -> UIView{
+        
         // Fristly, construct the container (subview) before including control in it..
-            subVu.frame.size =  CGSize(width:320, height:320)
-            subVu.backgroundColor = UIColor(red:31/255, green:127/255, blue:113/255, alpha:0.15)
-            
-        //  Now create objects of all controls you wish to include in the subview container.. (check the structs at the end of this .swift file)
-            
-            let firstNameLabel: CreateNewUserLabels! = CreateNewUserLabels(theFrameIs: CGRect(x:0, y:0, width:100, height:32), theTextIs: "First Name")
-            let firstNameTxtfld: CreateNewUserTextFields! = CreateNewUserTextFields(theFrameIs:CGRect(x:102, y:0, width:200, height:32))
-            
-            let lastNameLabel: CreateNewUserLabels! = CreateNewUserLabels(theFrameIs: CGRect(x:0, y:40, width:100, height:32), theTextIs: "Last name")
-            let lastNameTxtfld: CreateNewUserTextFields! = CreateNewUserTextFields(theFrameIs:CGRect(x:102, y:40, width:200, height:32))
-
-            let emailLabel: CreateNewUserLabels! = CreateNewUserLabels(theFrameIs: CGRect(x:0, y:80, width:100, height:32), theTextIs: "Email")
-            let emailTxtfld: CreateNewUserTextFields! = CreateNewUserTextFields(theFrameIs:CGRect(x:102, y:80, width:200, height:32))
-
-            let passwordLabel: CreateNewUserLabels! = CreateNewUserLabels(theFrameIs: CGRect(x:0, y:120, width:100, height:32), theTextIs: "Password")
-            let passwordTxtfld: CreateNewUserTextFields! = CreateNewUserTextFields(theFrameIs:CGRect(x:102, y:120, width:200, height:32))
-            passwordTxtfld.isSecureText()
-
-            let mobileNumLabel: CreateNewUserLabels! = CreateNewUserLabels(theFrameIs: CGRect(x:0, y:160, width:100, height:32), theTextIs: "Mobile No.")
-            let mobileNumTxtfld: CreateNewUserTextFields! = CreateNewUserTextFields(theFrameIs:CGRect(x:102, y:160, width:200, height:32))
-
-            
-            let createNewUserButton: CreateNewUserButtons! = CreateNewUserButtons()
-
-            
+        newUserInfoBox.frame.size =  CGSize(width:320, height:400)
+        newUserInfoBox.frame.origin = CGPoint(x:0, y:20)
+        newUserInfoBox.backgroundColor = appGreenColor(alphaIs: 0.15)
+        
         //  Add controls in order of appearance inside the containing subview using objects above (labels, textflds, buttons, etc..)
-            
-            subVu.addSubview(firstNameLabel.layoutLabel())
-            subVu.addSubview(firstNameTxtfld.layoutTextfield())
-                subVu.addSubview(lastNameLabel.layoutLabel())
-                subVu.addSubview(lastNameTxtfld.layoutTextfield())
-                    subVu.addSubview(emailLabel.layoutLabel())
-                    subVu.addSubview(emailTxtfld.layoutTextfield())
-                        subVu.addSubview(passwordLabel.layoutLabel())
-                        subVu.addSubview(passwordTxtfld.layoutTextfield())
-                            subVu.addSubview(mobileNumLabel.layoutLabel())
-                            subVu.addSubview(mobileNumTxtfld.layoutTextfield())
-            
-            subVu.addSubview(createNewUserButton.layoutButton())
-            
-            return subVu
-       
-        }
         
-        func centerTheVu(superVuX:CGFloat){
+        newUserInfoBox.addSubview(firstNameLabel)
+        newUserInfoBox.addSubview(firstNameTxtfld)
+            newUserInfoBox.addSubview(lastNameLabel)
+            newUserInfoBox.addSubview(lastNameTxtfld)
+                newUserInfoBox.addSubview(emailLabel)
+                newUserInfoBox.addSubview(emailTxtfld)
+            newUserInfoBox.addSubview(passwordLabel)
+            newUserInfoBox.addSubview(passwordTxtfld)
+            passwordTxtfld.isSecureTextEntry = true
+        newUserInfoBox.addSubview(mobileNumLabel)
+        newUserInfoBox.addSubview(mobileNumTxtfld)
         
-            subVu.center.x = superVuX
-        }
-
-    
-    
-    //// the structs below are used to build the controls on the view programmatically
-    
-    struct CreateNewUserLabels{     //  use this struct to build LABEL objects in your view
-    
-        let theFrameIs:CGRect!
-        let theTextIs: String!
+        newUserInfoBox.addSubview(NewUserButton)
         
-            func layoutLabel() -> UILabel{
-                let aLabel = UILabel()
-                
-                aLabel.frame = theFrameIs
-                aLabel.text = theTextIs
-                aLabel.textColor = UIColor(red:31/255, green:127/255, blue:113/255, alpha:1)
-                
-                return aLabel
-            
-            }
-        
-    }
-    
-    
-    struct CreateNewUserTextFields{     //  use this struct to build TEXTFIELD objects in your view
-    
-        private let aTxtfld: UITextField! = UITextField()
-        let theFrameIs: CGRect!
-
-            func layoutTextfield() -> UITextField{
-            
-                aTxtfld.frame = theFrameIs
-                aTxtfld.backgroundColor = UIColor(red:31/255, green:127/255, blue:113/255, alpha:0.13)
-                aTxtfld.textColor = UIColor(red:31/255, green:127/255, blue:113/255, alpha:1)
-                
-                return aTxtfld
-            }
-            
-            func isSecureText(){    //  call this func only for password fields objects
-            
-                aTxtfld.isSecureTextEntry = true
-            }
-        
+        return newUserInfoBox
     }
 
     
-    struct CreateNewUserButtons {    //  use this struct to build BUTTON objects in your view
-
-            func layoutButton() -> UIButton{
-                
-                let aButton: UIButton! = UIButton()
-
-                aButton.frame = CGRect(x:0,y:265,width:200,height:34)
-                aButton.backgroundColor = UIColor(red:31/255, green:127/255, blue:113/255, alpha:1)
-                aButton.setTitle("Create New User", for: UIControlState.normal)
-                
-                return aButton
-            }
+    //  Now create objects of all controls you wish to include in the subview container..
+    
+        let firstNameLabel: UILabel = LabelBlueprint().layoutLabel(theTextIs:"First Name")
+        let firstNameTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
+    
+        let lastNameLabel: UILabel! = LabelBlueprint().layoutLabel(theTextIs: "Last Name")
+        let lastNameTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
         
-    }
+        let emailLabel: UILabel! = LabelBlueprint().layoutLabel(theTextIs: "Email")
+        let emailTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
+        
+        let passwordLabel: UILabel! = LabelBlueprint().layoutLabel(theTextIs: "Password")
+        let passwordTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
+        
+        let mobileNumLabel: UILabel! = LabelBlueprint().layoutLabel(theTextIs: "Mobile No.")
+        let mobileNumTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
+        
+    let NewUserButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs:"Create New User")
 
+    
 }
 
 
