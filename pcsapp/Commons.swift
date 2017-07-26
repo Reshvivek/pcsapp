@@ -12,7 +12,6 @@ func appGreenColor(alphaIs: CGFloat) -> UIColor {    // call this func to set an
 
     return UIColor(red:32/255, green:127/255, blue:113/255, alpha: alphaIs)
     
-
 }
 
 
@@ -39,10 +38,9 @@ struct LabelBlueprint {
         aLabel.translatesAutoresizingMaskIntoConstraints = false
         
         aLabel.text = theTextIs
+        aLabel.font = appCustomFont()
         aLabel.textAlignment = NSTextAlignment.right
         aLabel.textColor = appGreenColor(alphaIs: 1)
-        aLabel.backgroundColor = UIColor.clear
-
         
         return aLabel
     }
@@ -60,6 +58,7 @@ struct TextFieldBlueprint {
         
         aTxtFld.backgroundColor = appGreenColor(alphaIs:0.13)
         aTxtFld.textColor = appGreenColor(alphaIs: 1)
+        aTxtFld.font = appCustomFont()
 
         return aTxtFld
 
@@ -78,7 +77,6 @@ struct TextViewBlueprint {
             aTxtVu.backgroundColor = appGreenColor(alphaIs: 0.25)
             aTxtVu.textColor = UIColor.white
             aTxtVu.font = appCustomFont()
-            aTxtVu.text = "Tap to add a brief description"
         
         return aTxtVu
     }
@@ -104,13 +102,13 @@ struct ButtonBlueprint {    //  use this struct to build BUTTON objects in your 
 
 struct ImageViewBlueprint {
     
-    func layoutImage() -> UIImageView {
+    func layoutImage(imageNameIs: String) -> UIImageView {
         
         let anImage: UIImageView! = UIImageView()
         
             anImage.translatesAutoresizingMaskIntoConstraints = false
         
-            anImage.image = UIImage(imageLiteralResourceName: "user")
+            anImage.image = UIImage(imageLiteralResourceName: imageNameIs)
             anImage.backgroundColor = appGreenColor(alphaIs: 0.13)
             anImage.contentMode = UIViewContentMode.scaleAspectFit
 

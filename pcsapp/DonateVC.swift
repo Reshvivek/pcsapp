@@ -24,7 +24,7 @@ class DonateVC: UINavigationController {
     }
 
     
-    func applyScrollViewConstraints() {
+    private func applyScrollViewConstraints() {
     
         let dsv = instanceOfDonateView.donateScrollView
         

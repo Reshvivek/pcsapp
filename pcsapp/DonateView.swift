@@ -15,49 +15,59 @@ struct DonateView {
         func layoutDonateScrollView() -> UIScrollView {
         
             donateScrollView.translatesAutoresizingMaskIntoConstraints = false
-                //donateScrollView.backgroundColor = UIColor.orange
-                    donateScrollView.contentSize.height = CGFloat(1600)
-
+            donateScrollView.bounces = false
+            donateScrollView.contentSize.height = CGFloat(944)
             
-            //  add all required subviews to the scrollview below this comment up to 'return' statement
+        //  add all required subviews to the scrollview below this comment up to 'return' statement
             
+            // starting with the image view of the donated item -user will use camera-
             donateScrollView.addSubview(itemDonatedImage)
-            NSLayoutConstraint.activate([itemDonatedImage.topAnchor.constraint(equalTo: donateScrollView.topAnchor, constant: 10),
-                                         itemDonatedImage.widthAnchor.constraint(equalToConstant: 360),
-                                         itemDonatedImage.heightAnchor.constraint(equalToConstant: 240),
-                                         itemDonatedImage.centerXAnchor.constraint(equalTo: donateScrollView.centerXAnchor)])
+                NSLayoutConstraint.activate([itemDonatedImage.topAnchor.constraint(equalTo: donateScrollView.topAnchor, constant: 10),
+                                             itemDonatedImage.widthAnchor.constraint(equalToConstant: 360),
+                                             itemDonatedImage.heightAnchor.constraint(equalToConstant: 240),
+                                             itemDonatedImage.centerXAnchor.constraint(equalTo: donateScrollView.centerXAnchor)])
         
+            // add the 'Brief Description' box, apply its constraints
             donateScrollView.addSubview(briefDescription)
-            NSLayoutConstraint.activate([briefDescription.topAnchor.constraint(equalTo: itemDonatedImage.bottomAnchor, constant: 10),
-                                         briefDescription.widthAnchor.constraint(equalToConstant: 360),
-                                         briefDescription.heightAnchor.constraint(equalToConstant: 90),
-                                         briefDescription.centerXAnchor.constraint(equalTo: donateScrollView.centerXAnchor)])
-
-//            
-
-            
+            briefDescription.text = "Tap to add a brief description"
+                NSLayoutConstraint.activate([briefDescription.topAnchor.constraint(equalTo: itemDonatedImage.bottomAnchor, constant: 10),
+                                             briefDescription.widthAnchor.constraint(equalToConstant: 360),
+                                             briefDescription.heightAnchor.constraint(equalToConstant: 90),
+                                             briefDescription.centerXAnchor.constraint(equalTo: donateScrollView.centerXAnchor)])
+ 
+            // add the 'Pickup Details' box, apply its constraints, call the func that applies constraints for sub UI controls
             donateScrollView.addSubview(layoutPickDetailsBox())
-            NSLayoutConstraint.activate([pickupDetailsBox.topAnchor.constraint(equalTo:briefDescription.bottomAnchor, constant: 10),
-                                         pickupDetailsBox.widthAnchor.constraint(equalToConstant:360),
-                                         pickupDetailsBox.heightAnchor.constraint(equalToConstant: 177),
-                                         pickupDetailsBox.centerXAnchor.constraint(equalTo:donateScrollView.centerXAnchor)])
-            NSLayoutConstraint.activate([pickupDetailsLabel.leadingAnchor.constraint(equalTo:pickupDetailsBox.leadingAnchor, constant: 5),
-                                         pickupDetailsLabel.heightAnchor.constraint(equalToConstant: 32),
-                                         pickupDetailsLabel.widthAnchor.constraint(equalToConstant: 100)])
+                NSLayoutConstraint.activate([pickupDetailsBox.topAnchor.constraint(equalTo:briefDescription.bottomAnchor, constant: 10),
+                                             pickupDetailsBox.widthAnchor.constraint(equalToConstant:360),
+                                             pickupDetailsBox.heightAnchor.constraint(equalToConstant: 177),
+                                             pickupDetailsBox.centerXAnchor.constraint(equalTo:donateScrollView.centerXAnchor)])
+                applyPickupDetailsConstraints()
+            
 
-//                donateScrollView.addSubview(layoutContactDetailsBox())
-//                donateScrollView.addSubview(additionalNotesTextView)
+            // add the 'Contact Details' box, apply its constraints, call the func that applies constraints for sub UI controls
+            donateScrollView.addSubview(layoutContactDetailsBox())
+                NSLayoutConstraint.activate([contactDetailsBox.topAnchor.constraint(equalTo: pickupDetailsBox.bottomAnchor, constant: 10),
+                                             contactDetailsBox.widthAnchor.constraint(equalToConstant: 360),
+                                             contactDetailsBox.heightAnchor.constraint(equalToConstant: 177),
+                                             contactDetailsBox.centerXAnchor.constraint(equalTo: donateScrollView.centerXAnchor)])
+                applyContactDetailsConstraints()
+            
+            // add the 'addtional notes' textview, apply its constraints
+            donateScrollView.addSubview(additionalNotesTextView)
+            additionalNotesTextView.text = "Additional Notes (e.g. notes for pickup)"
+                NSLayoutConstraint.activate([additionalNotesTextView.topAnchor.constraint(equalTo: contactDetailsBox.bottomAnchor, constant: 10),
+                                             additionalNotesTextView.widthAnchor.constraint(equalToConstant: 360),
+                                             additionalNotesTextView.heightAnchor.constraint(equalToConstant: 90),
+                                             additionalNotesTextView.centerXAnchor.constraint(equalTo: donateScrollView.centerXAnchor)])
+            
+            // add the 'submit' button, apply its constraints
             donateScrollView.addSubview(submitButton)
-            NSLayoutConstraint.activate([submitButton.topAnchor.constraint(equalTo: pickupDetailsBox.bottomAnchor, constant: 10),
-                                         submitButton.widthAnchor.constraint(equalToConstant: 240),
-                                         submitButton.heightAnchor.constraint(equalToConstant: 50),
-                                         submitButton.centerXAnchor.constraint(equalTo: donateScrollView.centerXAnchor)])
+                NSLayoutConstraint.activate([submitButton.topAnchor.constraint(equalTo: additionalNotesTextView.bottomAnchor, constant: 10),
+                                             submitButton.widthAnchor.constraint(equalToConstant: 240),
+                                             submitButton.heightAnchor.constraint(equalToConstant: 50),
+                                             submitButton.centerXAnchor.constraint(equalTo: donateScrollView.centerXAnchor)])
             
-//            NSLayoutConstraint.activate([submitButton.topAnchor.constraint(equalTo: briefDescription.bottomAnchor, constant: 40),
-//                                         submitButton.leadingAnchor.constraint(equalTo: donateScrollView.centerXAnchor),
-//                                         submitButton.trailingAnchor.constraint(equalTo: donateScrollView.trailingAnchor),
-//                                         submitButton.bottomAnchor.constraint(equalTo: donateScrollView.bottomAnchor)])
-            
+            //  return the whole scroll view will all subviews with their constraints applied
             return donateScrollView
         }
     
@@ -66,94 +76,144 @@ struct DonateView {
     
     let pickupDetailsBox: UIView! = UIView()
     
-    func layoutPickDetailsBox() -> UIView {
+        private func layoutPickDetailsBox() -> UIView {
 
-        pickupDetailsBox.translatesAutoresizingMaskIntoConstraints = false
-        pickupDetailsBox.backgroundColor = appGreenColor(alphaIs: 0.13)
-        
-        pickupDetailsBox.addSubview(pickupDetailsLabel)
-        
-        pickupDetailsBox.addSubview(addressLabel)
-        pickupDetailsBox.addSubview(addressTextField)
+            pickupDetailsBox.translatesAutoresizingMaskIntoConstraints = false
+            pickupDetailsBox.backgroundColor = appGreenColor(alphaIs: 0.25)
+            
+            pickupDetailsBox.addSubview(pickupDetailsLabel)
 
+            pickupDetailsBox.addSubview(addressLabel)
+            pickupDetailsBox.addSubview(addressTextField)
+
+            pickupDetailsBox.addSubview(dateLabel)
+            pickupDetailsBox.addSubview(dateTextField)
+
+            pickupDetailsBox.addSubview(timeLabel)
+            pickupDetailsBox.addSubview(timeTextField)
+            
+            return pickupDetailsBox
+        }
+            private func applyPickupDetailsConstraints(){
         
-                pickupDetailsBox.addSubview(dateLabel)
-                pickupDetailsBox.addSubview(dateTextField)
-                    pickupDetailsBox.addSubview(timeLabel)
-                    pickupDetailsBox.addSubview(timeTextField)
+        NSLayoutConstraint.activate([pickupDetailsLabel.topAnchor.constraint(equalTo:pickupDetailsBox.topAnchor, constant: 5),
+                                     pickupDetailsLabel.leadingAnchor.constraint(equalTo: pickupDetailsBox.leadingAnchor),
+                                     pickupDetailsLabel.widthAnchor.constraint(equalToConstant: 110),
+                                     pickupDetailsLabel.heightAnchor.constraint(equalToConstant: 32)])
         
-        return pickupDetailsBox
-    }
+        NSLayoutConstraint.activate([addressLabel.topAnchor.constraint(equalTo: pickupDetailsLabel.bottomAnchor),
+                                     addressLabel.leadingAnchor.constraint(equalTo: pickupDetailsBox.leadingAnchor),
+                                     addressLabel.widthAnchor.constraint(equalToConstant: 110),
+                                     addressLabel.heightAnchor.constraint(equalToConstant: 32)])
+        
+        NSLayoutConstraint.activate([addressTextField.topAnchor.constraint(equalTo: pickupDetailsLabel.bottomAnchor),
+                                     addressTextField.leadingAnchor.constraint(equalTo: addressLabel.trailingAnchor, constant: 5),
+                                     addressTextField.widthAnchor.constraint(equalToConstant: 200),
+                                     addressTextField.heightAnchor.constraint(equalToConstant: 32)])
+        
+        NSLayoutConstraint.activate([dateLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 3),
+                                     dateLabel.leadingAnchor.constraint(equalTo: pickupDetailsBox.leadingAnchor),
+                                     dateLabel.widthAnchor.constraint(equalToConstant: 110),
+                                     dateLabel.heightAnchor.constraint(equalToConstant: 32)])
+        
+        NSLayoutConstraint.activate([dateTextField.topAnchor.constraint(equalTo: addressTextField.bottomAnchor, constant: 3),
+                                     dateTextField.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: 5),
+                                     dateTextField.widthAnchor.constraint(equalToConstant: 200),
+                                     dateTextField.heightAnchor.constraint(equalToConstant: 32)])
+        
+        NSLayoutConstraint.activate([timeLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 3),
+                                     timeLabel.leadingAnchor.constraint(equalTo: pickupDetailsBox.leadingAnchor),
+                                     timeLabel.widthAnchor.constraint(equalToConstant: 110),
+                                     timeLabel.heightAnchor.constraint(equalToConstant: 32)])
+        
+        NSLayoutConstraint.activate([timeTextField.topAnchor.constraint(equalTo: dateTextField.bottomAnchor, constant: 3),
+                                     timeTextField.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor, constant: 5),
+                                     timeTextField.widthAnchor.constraint(equalToConstant: 200),
+                                     timeTextField.heightAnchor.constraint(equalToConstant: 32)])
+    }      //  this func will apply the constraints to the UI controls in the 'Pickup Details' box
     
     
     //  The box below include the contact details controls (contact person, mobile#) surrounded by a green box
     
-//    let contactDetailsBox: UIView! = UIView()
-//    
-//    func layoutContactDetailsBox() -> UIView {
-//    
-//        contactDetailsBox.frame.size = CGSize(width:itemDonatedImage.frame.width, height:150)
-//        contactDetailsBox.frame.origin = CGPoint(x:0, y:500)
-//        contactDetailsBox.backgroundColor = appGreenColor(alphaIs: 0.13)
-//        
-//        contactDetailsBox.addSubview(contactDetailsLabel)
-//            contactDetailsBox.addSubview(contactPersonLabel)
-//            contactDetailsBox.addSubview(contactPersonTextField)
-//                contactDetailsBox.addSubview(mobileLabel)
-//                contactDetailsBox.addSubview(mobileTextField)
-//        
-//        return contactDetailsBox
-//    }
+    let contactDetailsBox: UIView! = UIView()
+    
+        private func layoutContactDetailsBox() -> UIView {
+        
+            contactDetailsBox.translatesAutoresizingMaskIntoConstraints = false
+            contactDetailsBox.backgroundColor = appGreenColor(alphaIs: 0.25)
+            
+            contactDetailsBox.addSubview(contactDetailsLabel)
+                contactDetailsBox.addSubview(contactPersonLabel)
+                contactDetailsBox.addSubview(contactPersonTextField)
+                    contactDetailsBox.addSubview(mobileLabel)
+                    contactDetailsBox.addSubview(mobileTextField)
+            
+            return contactDetailsBox
+        }
+            private func applyContactDetailsConstraints(){
+        
+        NSLayoutConstraint.activate([contactDetailsLabel.topAnchor.constraint(equalTo: contactDetailsBox.topAnchor, constant: 5),
+                                     contactDetailsLabel.leadingAnchor.constraint(equalTo:contactDetailsBox.leadingAnchor),
+                                     contactDetailsLabel.widthAnchor.constraint(equalToConstant: 110),
+                                     contactDetailsLabel.heightAnchor.constraint(equalToConstant: 32)])
+        
+        NSLayoutConstraint.activate([contactPersonLabel.topAnchor.constraint(equalTo: contactDetailsLabel.bottomAnchor),
+                                     contactPersonLabel.leadingAnchor.constraint(equalTo:contactDetailsBox.leadingAnchor),
+                                     contactPersonLabel.widthAnchor.constraint(equalToConstant: 110),
+                                     contactPersonLabel.heightAnchor.constraint(equalToConstant: 32)])
+        
+        NSLayoutConstraint.activate([contactPersonTextField.topAnchor.constraint(equalTo: contactDetailsLabel.bottomAnchor),
+                                     contactPersonTextField.leadingAnchor.constraint(equalTo: contactPersonLabel.trailingAnchor, constant: 5),
+                                     contactPersonTextField.widthAnchor.constraint(equalToConstant: 200),
+                                     contactPersonTextField.heightAnchor.constraint(equalToConstant: 32)])
+        
+        NSLayoutConstraint.activate([mobileLabel.topAnchor.constraint(equalTo: contactPersonLabel.bottomAnchor, constant: 3),
+                                     mobileLabel.leadingAnchor.constraint(equalTo:contactDetailsBox.leadingAnchor),
+                                     mobileLabel.widthAnchor.constraint(equalToConstant: 110),
+                                     mobileLabel.heightAnchor.constraint(equalToConstant: 32)])
+        
+        NSLayoutConstraint.activate([mobileTextField.topAnchor.constraint(equalTo: contactPersonTextField.bottomAnchor, constant: 3),
+                                     mobileTextField.leadingAnchor.constraint(equalTo: mobileLabel.trailingAnchor, constant: 5),
+                                     mobileTextField.widthAnchor.constraint(equalToConstant: 200),
+                                     mobileTextField.heightAnchor.constraint(equalToConstant: 32)])
+        
+        
+        
+        
+    }     //  this func will apply the constraints to the UI controls in the 'Contact Details' box
 
 
     //  Image of the donated item..
-        let itemDonatedImage: UIImageView = ImageViewBlueprint().layoutImage()
+    let itemDonatedImage: UIImageView = ImageViewBlueprint().layoutImage(imageNameIs: "meeting")
     
     // Brief Description text view
-        let briefDescription: UITextView = TextViewBlueprint().layoutTextView()
+    let briefDescription: UITextView = TextViewBlueprint().layoutTextView()
   
     //  Pickup Details controls
-        let pickupDetailsLabel: UILabel = LabelBlueprint().layoutLabel(theTextIs: "Pickup Details")
+    let pickupDetailsLabel: UILabel = LabelBlueprint().layoutLabel(theTextIs: "Pickup Details")
     
-        let addressLabel: UILabel = LabelBlueprint().layoutLabel(theTextIs: "Address")
-        let addressTextField: UITextField = TextFieldBlueprint().layoutTextField()
+    let addressLabel: UILabel = LabelBlueprint().layoutLabel(theTextIs: "Address")
+    let addressTextField: UITextField = TextFieldBlueprint().layoutTextField()
 
-        let dateLabel: UILabel = LabelBlueprint().layoutLabel(theTextIs: "Date")
-        let dateTextField: UITextField = TextFieldBlueprint().layoutTextField()
+    let dateLabel: UILabel = LabelBlueprint().layoutLabel(theTextIs: "Date")
+    let dateTextField: UITextField = TextFieldBlueprint().layoutTextField()
 
-        let timeLabel: UILabel = LabelBlueprint().layoutLabel(theTextIs: "time")
-        let timeTextField: UITextField = TextFieldBlueprint().layoutTextField()
+    let timeLabel: UILabel = LabelBlueprint().layoutLabel(theTextIs: "Time")
+    let timeTextField: UITextField = TextFieldBlueprint().layoutTextField()
     
-//    //  Contact Details controls
-//        let contactDetailsLabel: UILabel = LabelBluePrint().layoutLabel(theTextIs: "Contact Details")
-//        
-//        let contactPersonLabel: UILabel = LabelBluePrint().layoutLabel(theTextIs: "Contact Person")
-//        let contactPersonTextField: UITextField = TextFieldBluePrint().layoutTextField()
-//
-//        let mobileLabel: UILabel = LabelBluePrint().layoutLabel(theTextIs: "Mobile#")
-//        let mobileTextField: UITextField = TextFieldBluePrint().layoutTextField()
+    //  Contact Details controls
+    let contactDetailsLabel: UILabel = LabelBlueprint().layoutLabel(theTextIs: "Contact Details")
+    
+    let contactPersonLabel: UILabel = LabelBlueprint().layoutLabel(theTextIs: "Contact Person")
+    let contactPersonTextField: UITextField = TextFieldBlueprint().layoutTextField()
+
+    let mobileLabel: UILabel = LabelBlueprint().layoutLabel(theTextIs: "Mobile#")
+    let mobileTextField: UITextField = TextFieldBlueprint().layoutTextField()
     
     //  Additional Notes controls
-        let additionalNotesTextView: UITextView = TextViewBlueprint().layoutTextView()
-    
+    let additionalNotesTextView: UITextView = TextViewBlueprint().layoutTextView()
+
     //  Submit button
-        let submitButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs:"Submit")
-    
-//            func applySubmitButtonConstraints(){
-//            
-//              NSLayoutConstraint.activate([submitButton.topAnchor.constraint(equalTo: itemDonatedImage.bottomAnchor),
-//                            submitButton.widthAnchor.constraint(equalToConstant: 360),
-//                            submitButton.heightAnchor.constraint(equalToConstant: 34),
-//                            submitButton.centerXAnchor.constraint(equalTo: donateScrollView.centerXAnchor)])
-//                
-////                let asbc = (submitButton.topAnchor.constraint(equalTo: itemDonatedImage.bottomAnchor),
-////                                             submitButton.widthAnchor.constraint(equalToConstant: 360),
-////                                             submitButton.heightAnchor.constraint(equalToConstant: 240),
-////                                             submitButton.centerXAnchor.constraint(equalTo: donateScrollView.centerXAnchor))
-//                //let asbcArray: [NSLayoutConstraint] = [asbc.0, asbc.1, asbc.2, asbc.3]
-//                //NSLayoutConstraint.activate([asbc.0, asbc.1, asbc.2, asbc.3])
-//                
-//            }
-    
+    let submitButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs:"Submit")
 
 }

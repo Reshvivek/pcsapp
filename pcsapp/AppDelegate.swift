@@ -19,9 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
             window?.makeKeyAndVisible()
-                window?.rootViewController = DonateVC()
+                window?.rootViewController = TabBarVC()
         
         window?.backgroundColor = UIColor.white
+
         return true
     }
 

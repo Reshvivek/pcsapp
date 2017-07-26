@@ -17,6 +17,9 @@
 		2AA7724F1ECB28A900EDD864 /* pcsappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA7724E1ECB28A900EDD864 /* pcsappUITests.swift */; };
 		2AA949941F1354A90098E900 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA949931F1354A90098E900 /* LoginView.swift */; };
 		2AA949961F13589C0098E900 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA949951F13589C0098E900 /* LoginVC.swift */; };
+		2AA952E01F2745B20097E4A7 /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA952DF1F2745B20097E4A7 /* AboutUs.swift */; };
+		2AA952E21F2745D60097E4A7 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA952E11F2745D60097E4A7 /* AboutUsVC.swift */; };
+		2AB187C21F281DD300C20C91 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB187C11F281DD300C20C91 /* TabBarVC.swift */; };
 		2AB9F5F21F1B30C0007430FD /* DonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB9F5F11F1B30C0007430FD /* DonateView.swift */; };
 		2AB9F5F51F1B3994007430FD /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB9F5F41F1B3994007430FD /* Commons.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +58,9 @@
 		2AA772501ECB28A900EDD864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AA949931F1354A90098E900 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = pcsapp/LoginView.swift; sourceTree = "<group>"; };
 		2AA949951F13589C0098E900 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = pcsapp/LoginVC.swift; sourceTree = "<group>"; };
+		2AA952DF1F2745B20097E4A7 /* AboutUs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutUs.swift; path = pcsapp/AboutUs.swift; sourceTree = "<group>"; };
+		2AA952E11F2745D60097E4A7 /* AboutUsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutUsVC.swift; path = pcsapp/AboutUsVC.swift; sourceTree = "<group>"; };
+		2AB187C11F281DD300C20C91 /* TabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarVC.swift; path = pcsapp/TabBarVC.swift; sourceTree = "<group>"; };
 		2AB9F5F11F1B30C0007430FD /* DonateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DonateView.swift; path = pcsapp/DonateView.swift; sourceTree = "<group>"; };
 		2AB9F5F41F1B3994007430FD /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Commons.swift; path = pcsapp/Commons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +156,7 @@
 				2AA949931F1354A90098E900 /* LoginView.swift */,
 				2A180A7F1F19B29700F2F2EA /* CreateNewUserView.swift */,
 				2AB9F5F11F1B30C0007430FD /* DonateView.swift */,
+				2AA952DF1F2745B20097E4A7 /* AboutUs.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -157,9 +164,11 @@
 		2AA949921F1352AE0098E900 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2AB187C11F281DD300C20C91 /* TabBarVC.swift */,
 				2AA949951F13589C0098E900 /* LoginVC.swift */,
 				2A180A811F19B49600F2F2EA /* CreateNewUserVC.swift */,
 				2A0A36441F1CB038003D9A2C /* DonateVC.swift */,
+				2AA952E11F2745D60097E4A7 /* AboutUsVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -311,9 +320,12 @@
 				2AB9F5F51F1B3994007430FD /* Commons.swift in Sources */,
 				2AA949941F1354A90098E900 /* LoginView.swift in Sources */,
 				2AA7722F1ECB28A900EDD864 /* AppDelegate.swift in Sources */,
+				2AA952E01F2745B20097E4A7 /* AboutUs.swift in Sources */,
+				2AA952E21F2745D60097E4A7 /* AboutUsVC.swift in Sources */,
 				2A180A821F19B49600F2F2EA /* CreateNewUserVC.swift in Sources */,
 				2A180A801F19B29700F2F2EA /* CreateNewUserView.swift in Sources */,
 				2A0A36451F1CB038003D9A2C /* DonateVC.swift in Sources */,
+				2AB187C21F281DD300C20C91 /* TabBarVC.swift in Sources */,
 				2AA949961F13589C0098E900 /* LoginVC.swift in Sources */,
 				2AB9F5F21F1B30C0007430FD /* DonateView.swift in Sources */,
 			);

@@ -32,16 +32,16 @@ struct CreateNewUserView{
         newUserInfoBox.frame.origin = CGPoint(x:0, y:20)
         newUserInfoBox.backgroundColor = appGreenColor(alphaIs: 0.15)
         
-        //  Add controls in order of appearance inside the containing subview using objects above (labels, textflds, buttons, etc..)
+        //  Add controls in order of appearance inside the containing subview using objects below (labels, textflds, buttons, etc..)
         
         newUserInfoBox.addSubview(firstNameLabel)
         newUserInfoBox.addSubview(firstNameTxtfld)
-            newUserInfoBox.addSubview(lastNameLabel)
-            newUserInfoBox.addSubview(lastNameTxtfld)
-                newUserInfoBox.addSubview(emailLabel)
-                newUserInfoBox.addSubview(emailTxtfld)
-            newUserInfoBox.addSubview(passwordLabel)
-            newUserInfoBox.addSubview(passwordTxtfld)
+        newUserInfoBox.addSubview(lastNameLabel)
+        newUserInfoBox.addSubview(lastNameTxtfld)
+        newUserInfoBox.addSubview(emailLabel)
+        newUserInfoBox.addSubview(emailTxtfld)
+        newUserInfoBox.addSubview(passwordLabel)
+        newUserInfoBox.addSubview(passwordTxtfld)
             passwordTxtfld.isSecureTextEntry = true
         newUserInfoBox.addSubview(mobileNumLabel)
         newUserInfoBox.addSubview(mobileNumTxtfld)
@@ -54,20 +54,20 @@ struct CreateNewUserView{
     
     //  Now create objects of all controls you wish to include in the subview container..
     
-        let firstNameLabel: UILabel = LabelBlueprint().layoutLabel(theTextIs:"First Name")
-        let firstNameTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
+    let firstNameLabel: UILabel = LabelBlueprint().layoutLabel(theTextIs:"First Name")
+    let firstNameTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
+
+    let lastNameLabel: UILabel! = LabelBlueprint().layoutLabel(theTextIs: "Last Name")
+    let lastNameTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
     
-        let lastNameLabel: UILabel! = LabelBlueprint().layoutLabel(theTextIs: "Last Name")
-        let lastNameTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
-        
-        let emailLabel: UILabel! = LabelBlueprint().layoutLabel(theTextIs: "Email")
-        let emailTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
-        
-        let passwordLabel: UILabel! = LabelBlueprint().layoutLabel(theTextIs: "Password")
-        let passwordTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
-        
-        let mobileNumLabel: UILabel! = LabelBlueprint().layoutLabel(theTextIs: "Mobile No.")
-        let mobileNumTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
+    let emailLabel: UILabel! = LabelBlueprint().layoutLabel(theTextIs: "Email")
+    let emailTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
+    
+    let passwordLabel: UILabel! = LabelBlueprint().layoutLabel(theTextIs: "Password")
+    let passwordTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
+    
+    let mobileNumLabel: UILabel! = LabelBlueprint().layoutLabel(theTextIs: "Mobile No.")
+    let mobileNumTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
         
     let NewUserButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs:"Create New User")
 
