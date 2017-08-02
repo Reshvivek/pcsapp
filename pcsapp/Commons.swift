@@ -17,9 +17,8 @@ func appGreenColor(alphaIs: CGFloat) -> UIColor {    // call this func to set an
 
 func appCustomFont() -> UIFont {    //  call this func to set the font for all controls that has involves font property in the app
 
-    let aFont: UIFont = UIFont(name: "Avenir-Book", size: 16)!
+    return UIFont(name: "Avenir-Book", size: 16)!
     
-    return aFont
 }
 
 

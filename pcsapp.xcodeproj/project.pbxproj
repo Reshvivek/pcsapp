@@ -164,8 +164,8 @@
 		2AA949921F1352AE0098E900 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2AB187C11F281DD300C20C91 /* TabBarVC.swift */,
 				2AA949951F13589C0098E900 /* LoginVC.swift */,
+				2AB187C11F281DD300C20C91 /* TabBarVC.swift */,
 				2A180A811F19B49600F2F2EA /* CreateNewUserVC.swift */,
 				2A0A36441F1CB038003D9A2C /* DonateVC.swift */,
 				2AA952E11F2745D60097E4A7 /* AboutUsVC.swift */,

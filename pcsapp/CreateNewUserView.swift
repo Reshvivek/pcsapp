@@ -10,47 +10,65 @@ import UIKit
 
 struct CreateNewUserView{
     
-    var someScrollView: UIScrollView! = UIScrollView()
+    let newUserInfoBox: UIView! = UIView()
     
-    func layoutScrollView() -> UIScrollView {
-    
-        someScrollView.frame.size = CGSize(width:330, height:800)
-        someScrollView.frame.origin = CGPoint(x:0, y:20)
-        someScrollView.backgroundColor = UIColor.clear
-        someScrollView.contentSize = CGSize(width:300, height:1800)
-        someScrollView.addSubview(layoutNewUserInfoBox())
-        return someScrollView
-    }
+    func layoutNewUserInfoBox() -> UIView {
+        
+        let views:[String:Any] = ["fnameLabel": firstNameLabel,
+                                  "fnameTxtfld": firstNameTxtfld,
+                                  "lnameLabel": lastNameLabel,
+                                  "lnameTxtfld": lastNameTxtfld,
+                                  "emailLabel": emailLabel,
+                                  "emailTxtfld": emailTxtfld,
+                                  "passwordLabel": passwordLabel,
+                                  "passwordTxtfld": passwordTxtfld,
+                                  "mobileNumLabel": mobileNumLabel,
+                                  "mobileNumTxtfld": mobileNumTxtfld,
+                                  "newUserButton": newUserButton
+                                  ]
+        let metrics:[String:Any] = ["vPadding": 280/12]
+        
+        newUserInfoBox.translatesAutoresizingMaskIntoConstraints = false
+        newUserInfoBox.backgroundColor = appGreenColor(alphaIs: 0.3)
+        
+                newUserInfoBox.addSubview(firstNameLabel)
+                newUserInfoBox.addSubview(firstNameTxtfld)
+        
+                newUserInfoBox.addSubview(lastNameLabel)
+                newUserInfoBox.addSubview(lastNameTxtfld)
+        
+                newUserInfoBox.addSubview(emailLabel)
+                newUserInfoBox.addSubview(emailTxtfld)
+        
+                newUserInfoBox.addSubview(passwordLabel)
+                newUserInfoBox.addSubview(passwordTxtfld)
+                    passwordTxtfld.isSecureTextEntry = true
+        
+                newUserInfoBox.addSubview(mobileNumLabel)
+                newUserInfoBox.addSubview(mobileNumTxtfld)
+                
+                //newUserInfoBox.addSubview(newUserButton)
+        
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-30-[fnameLabel(80)]", options:[], metrics:[:], views: views))
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:[fnameLabel]-[fnameTxtfld]-30-|", options: [], metrics: [:], views: views))
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-30-[lnameLabel(==fnameLabel)]", options:[], metrics:[:], views: views))
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:[lnameLabel]-[lnameTxtfld]-30-|", options: [], metrics: [:], views: views))
+        
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-30-[emailLabel(80)]", options:[], metrics:[:], views: views))
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:[emailLabel]-[emailTxtfld]-30-|", options: [], metrics: [:], views: views))
+        
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-30-[passwordLabel(80)]", options:[], metrics:[:], views: views))
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:[passwordLabel]-[passwordTxtfld]-30-|", options: [], metrics: [:], views: views))
+        
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-30-[mobileNumLabel(80)]", options:[], metrics:[:], views: views))
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:[mobileNumLabel]-[mobileNumTxtfld]-30-|", options: [], metrics: [:], views: views))
 
-    
-    let newUserInfoBox: UIView! = UIView()   // <-- the container subview surrounding controls, and is a subview of the scrollview above
-    
-    func layoutNewUserInfoBox() -> UIView{
         
-        // Fristly, construct the container (subview) before including control in it..
-        newUserInfoBox.frame.size =  CGSize(width:320, height:400)
-        newUserInfoBox.frame.origin = CGPoint(x:0, y:20)
-        newUserInfoBox.backgroundColor = appGreenColor(alphaIs: 0.15)
-        
-        //  Add controls in order of appearance inside the containing subview using objects below (labels, textflds, buttons, etc..)
-        
-        newUserInfoBox.addSubview(firstNameLabel)
-        newUserInfoBox.addSubview(firstNameTxtfld)
-        newUserInfoBox.addSubview(lastNameLabel)
-        newUserInfoBox.addSubview(lastNameTxtfld)
-        newUserInfoBox.addSubview(emailLabel)
-        newUserInfoBox.addSubview(emailTxtfld)
-        newUserInfoBox.addSubview(passwordLabel)
-        newUserInfoBox.addSubview(passwordTxtfld)
-            passwordTxtfld.isSecureTextEntry = true
-        newUserInfoBox.addSubview(mobileNumLabel)
-        newUserInfoBox.addSubview(mobileNumTxtfld)
-        
-        newUserInfoBox.addSubview(NewUserButton)
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|-vPadding-[fnameLabel(32)]-vPadding-[lnameLabel(==fnameLabel)]-vPadding-[emailLabel(==fnameLabel)]-vPadding-[passwordLabel(==emailLabel)]-vPadding-[mobileNumLabel(==passwordLabel)]", options:[], metrics:metrics, views: views))
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|-vPadding-[fnameTxtfld(32)]-vPadding-[lnameTxtfld(==fnameTxtfld)]-vPadding-[emailTxtfld(==lnameTxtfld)]-vPadding-[passwordTxtfld(==emailTxtfld)]-vPadding-[mobileNumTxtfld(==passwordTxtfld)]",options:[], metrics:metrics, views:views))
         
         return newUserInfoBox
     }
-
     
     //  Now create objects of all controls you wish to include in the subview container..
     
@@ -69,7 +87,7 @@ struct CreateNewUserView{
     let mobileNumLabel: UILabel! = LabelBlueprint().layoutLabel(theTextIs: "Mobile No.")
     let mobileNumTxtfld: UITextField! = TextFieldBlueprint().layoutTextField()
         
-    let NewUserButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs:"Create New User")
+    let newUserButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs:"Create New User")
 
     
 }

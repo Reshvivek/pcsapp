@@ -94,7 +94,7 @@ struct DonateView {
             
             return pickupDetailsBox
         }
-            private func applyPickupDetailsConstraints(){
+        private func applyPickupDetailsConstraints(){
         
         NSLayoutConstraint.activate([pickupDetailsLabel.topAnchor.constraint(equalTo:pickupDetailsBox.topAnchor, constant: 5),
                                      pickupDetailsLabel.leadingAnchor.constraint(equalTo: pickupDetailsBox.leadingAnchor),
@@ -150,7 +150,7 @@ struct DonateView {
             
             return contactDetailsBox
         }
-            private func applyContactDetailsConstraints(){
+        private func applyContactDetailsConstraints(){
         
         NSLayoutConstraint.activate([contactDetailsLabel.topAnchor.constraint(equalTo: contactDetailsBox.topAnchor, constant: 5),
                                      contactDetailsLabel.leadingAnchor.constraint(equalTo:contactDetailsBox.leadingAnchor),

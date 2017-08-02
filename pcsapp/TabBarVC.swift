@@ -16,12 +16,11 @@ class TabBarVC: UITabBarController {
     override func loadView() {
         super.loadView()
         
-        instanceOfDonateVC.tabBarItem = UITabBarItem(title: "Donate", image: UIImage(named:"donate"), tag: 0)
-        
-        instanceOfAboutUsVC.tabBarItem = UITabBarItem(title: "About", image: UIImage(named: "about"), tag: 1)
+        instanceOfDonateVC.tabBarItem = UITabBarItem(title: "Donate", image: UIImage(named:"donate"), tag: 2)
+        instanceOfAboutUsVC.tabBarItem = UITabBarItem(title: "About", image: UIImage(named: "about"), tag: 3)
         
         self.viewControllers = [instanceOfDonateVC, instanceOfAboutUsVC]
-    
+
     }
 
 

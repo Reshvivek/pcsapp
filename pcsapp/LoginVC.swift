@@ -8,20 +8,57 @@
 
 import UIKit
 
-class LoginVC: UIViewController{
+class LoginVC: UIViewController {
     
     
-    private let instanceOfLoginVu = LoginView().loginVuProperties()
+    private let instanceOfLoginView = LoginView()
     
     override func loadView() {
         super.loadView()
         
-        instanceOfLoginVu.frame = CGRect(x:0, y:view.bounds.minY+22, width:view.bounds.width, height:view.bounds.height)
+        view.addSubview(instanceOfLoginView.layoutLoginView())
         
-            view.addSubview(instanceOfLoginVu)
-    }
- 
+        applyLoginVCConstraints()
+        
+        instanceOfLoginView.createUserButton.addTarget(self, action: #selector(goToCreateNewUser), for: UIControlEvents.touchUpInside)
+        instanceOfLoginView.loginButton.addTarget(self, action: #selector(goToDonate), for: UIControlEvents.touchUpInside)
 
+        instanceOfLoginView.donateGuestButton.addTarget(self, action: #selector(donateAsGuest), for: UIControlEvents.touchUpInside)
+
+   
+    }
+    
+    func applyLoginVCConstraints() {
+            
+            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|[loginView]|", options: [], metrics: [:], views: ["loginView":instanceOfLoginView.loginView]))
+            
+            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[loginView]-|", options: [], metrics: [:], views: ["loginView":instanceOfLoginView.loginView]))
+            
+        }
+    
+    func goToCreateNewUser() {
+    
+        self.present(CreateNewUserVC(), animated: false, completion: nil)
+
+    }
+    
+    func goToDonate() {
+        
+        if instanceOfLoginView.usernameTextField.text == "gamal" && instanceOfLoginView.passwordTextField.text == "gamal" {
+        
+        self.present(TabBarVC(), animated: false, completion: nil)
+            
+        } else {
+            
+            print("username or password incorrect")
+        }
+    }
+    
+    func donateAsGuest() {
+    
+        self.present(TabBarVC(), animated: false, completion: nil)
+    }
 
 
 }
+

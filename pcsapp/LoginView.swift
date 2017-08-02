@@ -8,115 +8,69 @@
 
 import UIKit
 
-struct LoginView{
+struct LoginView {
     
     
-    let loginVu: UIView = UIView()
+    let loginView: UIView = UIView()
     
-        func loginVuProperties() -> UIView{
+        func layoutLoginView() -> UIView {
             
-            //loginVu.backgroundColor = UIColor.orange
+            let views:[String:Any] = ["username": usernameTextField,
+                                      "password": passwordTextField,
+                                      "login": loginButton,
+                                      "forgotPassword": forgotPasswordButton,
+                                      "createUser": createUserButton,
+                                      "donateGuest": donateGuestButton
+                                      ]
             
-            loginVu.addSubview(usernameTextFieldProperties())
+            loginView.translatesAutoresizingMaskIntoConstraints = false
+            loginView.addSubview(usernameTextField)
+            usernameTextField.backgroundColor = appGreenColor(alphaIs: 0.13)
+            usernameTextField.placeholder = "U s e r n a m e"
             
-                loginVu.addSubview(passwordTextFieldProperties())
+            loginView.addSubview(passwordTextField)
+            passwordTextField.placeholder = "P a s s w o r d"
+            loginView.addSubview(loginButton)
             
-            loginVu.addSubview(loginButtonProperties(theFrameIs: CGRect(x:loginVu.bounds.minX, y:80, width:200 , height:36), theBgColorIs: UIColor(red:31/255, green:127/255, blue:113/255, alpha:1) , bttnTitleIs: "Log In"))
+            loginView.addSubview(forgotPasswordButton)
+            forgotPasswordButton.backgroundColor = UIColor.clear
+            forgotPasswordButton.setTitleColor(appGreenColor(alphaIs: 1), for: UIControlState.normal)            
             
-            loginVu.addSubview(forgotPasswordButtonProperties(theFrameIs:CGRect(x:0, y:120, width:200, height:36), theBgColorIs:UIColor.clear, bttnTitleIs: "Forgot Password?"))
+            loginView.addSubview(createUserButton)
+            createUserButton.backgroundColor = UIColor.clear
+            createUserButton.setTitleColor(appGreenColor(alphaIs: 1), for: UIControlState.normal)
             
-            loginVu.addSubview(createUserButtonProperties(theFrameIs:CGRect(x:0, y:150, width:200, height:36), theBgColorIs:UIColor.clear, bttnTitleIs: "Create New User"))
+            loginView.addSubview(donateGuestButton)
             
-            loginVu.addSubview(donateGuestButtonProperties(theFrameIs: CGRect(x:(loginVu.bounds.minX) , y:200, width:200 , height:36), theBgColorIs: UIColor(red:31/255, green:127/255, blue:113/255, alpha:1) , bttnTitleIs: "Donate As Guest"))
+            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-25-[username]-25-|", options: [], metrics: [:], views: views))
+            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-25-[password]-25-|", options: [], metrics: [:], views: views))
+            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-25-[login]-25-|", options: [], metrics: [:], views: views))
+            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-25-[forgotPassword]-25-|", options: [], metrics: [:], views: views))
+            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-25-[createUser]-25-|", options: [], metrics: [:], views: views))
+            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-25-[donateGuest]-25-|", options: [], metrics: [:], views: views))
+            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|-155-[username(33)]-22-[password(==username)]-30-[login(48)]-30-[forgotPassword(==username)]-30-[createUser(==username)]-78-[donateGuest(48)]", options: [], metrics: [:], views: views))
 
-      
-            return loginVu
+            return loginView
         }
     
 
 //  username textfield
-
-    let usernameTextField: UITextField = UITextField(frame:CGRect(x:20, y:0, width:150, height:32))
-    
-        func usernameTextFieldProperties() -> UITextField{
-            
-            usernameTextField.textColor = UIColor(red:31/255, green:127/255, blue:113/255, alpha:1)
-            
-            usernameTextField.attributedPlaceholder = NSAttributedString(string: "u s e r n a m e", attributes:[NSForegroundColorAttributeName: UIColor(red:31/255, green:127/255, blue:113/255, alpha:0.7)])
-            
-            return usernameTextField
-        }
+    let usernameTextField: UITextField = TextFieldBlueprint().layoutTextField()
     
 //  password textfield
-    
-    let passwordTextField: UITextField = UITextField(frame:CGRect(x:20, y:40, width:150,height:32))
-    
-        func passwordTextFieldProperties() -> UITextField{
-            
-        
-            passwordTextField.attributedPlaceholder = NSAttributedString(string: "p a s s w o r d", attributes:[NSForegroundColorAttributeName:UIColor(red:31/255, green:127/255, blue:113/255, alpha:0.7)])
-            
-            passwordTextField.isSecureTextEntry = true
-            passwordTextField.textColor = UIColor(red:31/255, green:127/255, blue:113/255, alpha:1)
-
-            return passwordTextField
-        }
+    let passwordTextField: UITextField = TextFieldBlueprint().layoutTextField()
     
 //  login button
-    
-    let loginButton: UIButton = UIButton()
-    
-    func loginButtonProperties(theFrameIs: CGRect, theBgColorIs: UIColor, bttnTitleIs: String) -> UIButton{
-        
-        loginButton.frame = theFrameIs
-        loginButton.backgroundColor = theBgColorIs
-        loginButton.setTitle(bttnTitleIs, for: UIControlState.normal)
-        loginButton.setTitleColor(UIColor.white, for: UIControlState.normal)
-        
-        return loginButton
-    }
+    let loginButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs: "Login")
     
 // forgot password option button
-    
-    let forgotPasswordButton: UIButton = UIButton()
-    
-    func forgotPasswordButtonProperties(theFrameIs:CGRect, theBgColorIs: UIColor, bttnTitleIs: String) -> UIButton{
-        
-        forgotPasswordButton.frame = theFrameIs
-        forgotPasswordButton.backgroundColor = theBgColorIs
-        forgotPasswordButton.setTitle(bttnTitleIs, for: UIControlState.normal)
-        forgotPasswordButton.setTitleColor(UIColor(red:31/255, green:127/255, blue:113/255, alpha:0.7), for: UIControlState.normal)
-    
-        return forgotPasswordButton
-    }
-    
+    let forgotPasswordButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs: "Forgot Password?")
+
 // create user option button
-    
-    let createUserButton: UIButton = UIButton()
-    
-    func createUserButtonProperties(theFrameIs:CGRect, theBgColorIs: UIColor, bttnTitleIs: String) -> UIButton{
-        
-        createUserButton.frame = theFrameIs
-        createUserButton.backgroundColor = theBgColorIs
-        createUserButton.setTitle(bttnTitleIs, for: UIControlState.normal)
-        createUserButton.setTitleColor(UIColor(red:31/255, green:127/255, blue:113/255, alpha:0.7), for: UIControlState.normal)
-        
-        return createUserButton
-    }
-    
+    let createUserButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs: "Create New User")
+
 // donate as guest button
-    
-    let donateGuestButton: UIButton = UIButton()
-    
-    func donateGuestButtonProperties(theFrameIs: CGRect, theBgColorIs: UIColor, bttnTitleIs: String) -> UIButton{
-        
-        donateGuestButton.frame = theFrameIs
-        donateGuestButton.backgroundColor = theBgColorIs
-        donateGuestButton.setTitle(bttnTitleIs, for: UIControlState.normal)
-        donateGuestButton.setTitleColor(UIColor.white, for: UIControlState.normal)
-        
-        return donateGuestButton
-    }
+    let donateGuestButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs: "Donate As Guest")
 
  
 }
