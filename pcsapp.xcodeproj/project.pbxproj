@@ -10,6 +10,7 @@
 		2A0A36451F1CB038003D9A2C /* DonateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0A36441F1CB038003D9A2C /* DonateVC.swift */; };
 		2A180A801F19B29700F2F2EA /* CreateNewUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A180A7F1F19B29700F2F2EA /* CreateNewUserView.swift */; };
 		2A180A821F19B49600F2F2EA /* CreateNewUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A180A811F19B49600F2F2EA /* CreateNewUserVC.swift */; };
+		2A8258E51F3A99A4007DD1E3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8258E41F3A99A4007DD1E3 /* SettingsView.swift */; };
 		2AA7722F1ECB28A900EDD864 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA7722E1ECB28A900EDD864 /* AppDelegate.swift */; };
 		2AA772361ECB28A900EDD864 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA772351ECB28A900EDD864 /* Assets.xcassets */; };
 		2AA772391ECB28A900EDD864 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AA772371ECB28A900EDD864 /* LaunchScreen.storyboard */; };
@@ -19,6 +20,7 @@
 		2AA949961F13589C0098E900 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA949951F13589C0098E900 /* LoginVC.swift */; };
 		2AA952E01F2745B20097E4A7 /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA952DF1F2745B20097E4A7 /* AboutUs.swift */; };
 		2AA952E21F2745D60097E4A7 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA952E11F2745D60097E4A7 /* AboutUsVC.swift */; };
+		2AB0E9D61F393B5D003381F0 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB0E9D51F393B5D003381F0 /* SettingsVC.swift */; };
 		2AB187C21F281DD300C20C91 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB187C11F281DD300C20C91 /* TabBarVC.swift */; };
 		2AB9F5F21F1B30C0007430FD /* DonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB9F5F11F1B30C0007430FD /* DonateView.swift */; };
 		2AB9F5F51F1B3994007430FD /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB9F5F41F1B3994007430FD /* Commons.swift */; };
@@ -45,6 +47,7 @@
 		2A0A36441F1CB038003D9A2C /* DonateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DonateVC.swift; path = pcsapp/DonateVC.swift; sourceTree = "<group>"; };
 		2A180A7F1F19B29700F2F2EA /* CreateNewUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateNewUserView.swift; path = pcsapp/CreateNewUserView.swift; sourceTree = "<group>"; };
 		2A180A811F19B49600F2F2EA /* CreateNewUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateNewUserVC.swift; path = pcsapp/CreateNewUserVC.swift; sourceTree = "<group>"; };
+		2A8258E41F3A99A4007DD1E3 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = pcsapp/SettingsView.swift; sourceTree = "<group>"; };
 		2AA7722B1ECB28A900EDD864 /* pcsapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pcsapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA7722E1ECB28A900EDD864 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AA772351ECB28A900EDD864 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 		2AA949951F13589C0098E900 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = pcsapp/LoginVC.swift; sourceTree = "<group>"; };
 		2AA952DF1F2745B20097E4A7 /* AboutUs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutUs.swift; path = pcsapp/AboutUs.swift; sourceTree = "<group>"; };
 		2AA952E11F2745D60097E4A7 /* AboutUsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutUsVC.swift; path = pcsapp/AboutUsVC.swift; sourceTree = "<group>"; };
+		2AB0E9D51F393B5D003381F0 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsVC.swift; path = pcsapp/SettingsVC.swift; sourceTree = "<group>"; };
 		2AB187C11F281DD300C20C91 /* TabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarVC.swift; path = pcsapp/TabBarVC.swift; sourceTree = "<group>"; };
 		2AB9F5F11F1B30C0007430FD /* DonateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DonateView.swift; path = pcsapp/DonateView.swift; sourceTree = "<group>"; };
 		2AB9F5F41F1B3994007430FD /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Commons.swift; path = pcsapp/Commons.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 				2A180A7F1F19B29700F2F2EA /* CreateNewUserView.swift */,
 				2AB9F5F11F1B30C0007430FD /* DonateView.swift */,
 				2AA952DF1F2745B20097E4A7 /* AboutUs.swift */,
+				2A8258E41F3A99A4007DD1E3 /* SettingsView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -165,10 +170,9 @@
 			isa = PBXGroup;
 			children = (
 				2AA949951F13589C0098E900 /* LoginVC.swift */,
-				2AB187C11F281DD300C20C91 /* TabBarVC.swift */,
 				2A180A811F19B49600F2F2EA /* CreateNewUserVC.swift */,
-				2A0A36441F1CB038003D9A2C /* DonateVC.swift */,
-				2AA952E11F2745D60097E4A7 /* AboutUsVC.swift */,
+				2AE0FC7F1F348A5E00C344DF /* TabBarVCs */,
+				2AB0E9D51F393B5D003381F0 /* SettingsVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -179,6 +183,16 @@
 				2AB9F5F41F1B3994007430FD /* Commons.swift */,
 			);
 			name = Commons;
+			sourceTree = "<group>";
+		};
+		2AE0FC7F1F348A5E00C344DF /* TabBarVCs */ = {
+			isa = PBXGroup;
+			children = (
+				2AB187C11F281DD300C20C91 /* TabBarVC.swift */,
+				2A0A36441F1CB038003D9A2C /* DonateVC.swift */,
+				2AA952E11F2745D60097E4A7 /* AboutUsVC.swift */,
+			);
+			name = TabBarVCs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,11 +337,13 @@
 				2AA952E01F2745B20097E4A7 /* AboutUs.swift in Sources */,
 				2AA952E21F2745D60097E4A7 /* AboutUsVC.swift in Sources */,
 				2A180A821F19B49600F2F2EA /* CreateNewUserVC.swift in Sources */,
+				2AB0E9D61F393B5D003381F0 /* SettingsVC.swift in Sources */,
 				2A180A801F19B29700F2F2EA /* CreateNewUserView.swift in Sources */,
 				2A0A36451F1CB038003D9A2C /* DonateVC.swift in Sources */,
 				2AB187C21F281DD300C20C91 /* TabBarVC.swift in Sources */,
 				2AA949961F13589C0098E900 /* LoginVC.swift in Sources */,
 				2AB9F5F21F1B30C0007430FD /* DonateView.swift in Sources */,
+				2A8258E51F3A99A4007DD1E3 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,13 +14,11 @@ func appGreenColor(alphaIs: CGFloat) -> UIColor {    // call this func to set an
     
 }
 
-
 func appCustomFont() -> UIFont {    //  call this func to set the font for all controls that has involves font property in the app
 
-    return UIFont(name: "Avenir-Book", size: 16)!
+    return UIFont(name: "Avenir-Book", size: 17)!
     
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -52,15 +50,15 @@ struct TextFieldBlueprint {
     private let aTxtFld:UITextField! = UITextField()
     
     func layoutTextField() -> UITextField {
-        
+
         aTxtFld.translatesAutoresizingMaskIntoConstraints = false
         
-        aTxtFld.backgroundColor = appGreenColor(alphaIs:0.13)
+        aTxtFld.borderStyle = UITextBorderStyle.none
+        aTxtFld.backgroundColor = UIColor.clear
         aTxtFld.textColor = appGreenColor(alphaIs: 1)
         aTxtFld.font = appCustomFont()
 
         return aTxtFld
-
     }
 }
 
@@ -74,7 +72,7 @@ struct TextViewBlueprint {
             aTxtVu.translatesAutoresizingMaskIntoConstraints = false
         
             aTxtVu.backgroundColor = appGreenColor(alphaIs: 0.25)
-            aTxtVu.textColor = UIColor.white
+            aTxtVu.textColor = appGreenColor(alphaIs: 1)
             aTxtVu.font = appCustomFont()
         
         return aTxtVu
@@ -101,18 +99,17 @@ struct ButtonBlueprint {    //  use this struct to build BUTTON objects in your 
 
 struct ImageViewBlueprint {
     
+    private let anImage: UIImageView! = UIImageView()
+    
     func layoutImage(imageNameIs: String) -> UIImageView {
         
-        let anImage: UIImageView! = UIImageView()
-        
-            anImage.translatesAutoresizingMaskIntoConstraints = false
-        
-            anImage.image = UIImage(imageLiteralResourceName: imageNameIs)
-            anImage.backgroundColor = appGreenColor(alphaIs: 0.13)
-            anImage.contentMode = UIViewContentMode.scaleAspectFit
+        anImage.translatesAutoresizingMaskIntoConstraints = false
+    
+        anImage.image = UIImage(imageLiteralResourceName: imageNameIs)
+        anImage.alpha = 0.5
+        anImage.backgroundColor = appGreenColor(alphaIs: 0.0)
+        anImage.contentMode = UIViewContentMode.scaleAspectFit
 
-        
         return anImage
-        
     }
 }

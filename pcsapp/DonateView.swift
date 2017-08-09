@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct DonateView {
+class DonateView {
     
     let donateScrollView: UIScrollView = UIScrollView()
     
@@ -16,12 +16,14 @@ struct DonateView {
         
             donateScrollView.translatesAutoresizingMaskIntoConstraints = false
             donateScrollView.bounces = false
-            donateScrollView.contentSize.height = CGFloat(944)
+            donateScrollView.contentSize.height = CGFloat(895)
             
         //  add all required subviews to the scrollview below this comment up to 'return' statement
             
             // starting with the image view of the donated item -user will use camera-
             donateScrollView.addSubview(itemDonatedImage)
+            itemDonatedImage.alpha = 1
+            itemDonatedImage.backgroundColor = appGreenColor(alphaIs: 1)
                 NSLayoutConstraint.activate([itemDonatedImage.topAnchor.constraint(equalTo: donateScrollView.topAnchor, constant: 10),
                                              itemDonatedImage.widthAnchor.constraint(equalToConstant: 360),
                                              itemDonatedImage.heightAnchor.constraint(equalToConstant: 240),
@@ -107,7 +109,7 @@ struct DonateView {
                                      addressLabel.heightAnchor.constraint(equalToConstant: 32)])
         
         NSLayoutConstraint.activate([addressTextField.topAnchor.constraint(equalTo: pickupDetailsLabel.bottomAnchor),
-                                     addressTextField.leadingAnchor.constraint(equalTo: addressLabel.trailingAnchor, constant: 5),
+                                     addressTextField.leadingAnchor.constraint(equalTo: addressLabel.trailingAnchor, constant: 15),
                                      addressTextField.widthAnchor.constraint(equalToConstant: 200),
                                      addressTextField.heightAnchor.constraint(equalToConstant: 32)])
         
@@ -117,7 +119,7 @@ struct DonateView {
                                      dateLabel.heightAnchor.constraint(equalToConstant: 32)])
         
         NSLayoutConstraint.activate([dateTextField.topAnchor.constraint(equalTo: addressTextField.bottomAnchor, constant: 3),
-                                     dateTextField.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: 5),
+                                     dateTextField.leadingAnchor.constraint(equalTo: addressTextField.leadingAnchor),
                                      dateTextField.widthAnchor.constraint(equalToConstant: 200),
                                      dateTextField.heightAnchor.constraint(equalToConstant: 32)])
         
@@ -127,7 +129,7 @@ struct DonateView {
                                      timeLabel.heightAnchor.constraint(equalToConstant: 32)])
         
         NSLayoutConstraint.activate([timeTextField.topAnchor.constraint(equalTo: dateTextField.bottomAnchor, constant: 3),
-                                     timeTextField.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor, constant: 5),
+                                     timeTextField.leadingAnchor.constraint(equalTo: dateTextField.leadingAnchor),
                                      timeTextField.widthAnchor.constraint(equalToConstant: 200),
                                      timeTextField.heightAnchor.constraint(equalToConstant: 32)])
     }      //  this func will apply the constraints to the UI controls in the 'Pickup Details' box
@@ -163,7 +165,7 @@ struct DonateView {
                                      contactPersonLabel.heightAnchor.constraint(equalToConstant: 32)])
         
         NSLayoutConstraint.activate([contactPersonTextField.topAnchor.constraint(equalTo: contactDetailsLabel.bottomAnchor),
-                                     contactPersonTextField.leadingAnchor.constraint(equalTo: contactPersonLabel.trailingAnchor, constant: 5),
+                                     contactPersonTextField.leadingAnchor.constraint(equalTo: contactPersonLabel.trailingAnchor, constant: 15),
                                      contactPersonTextField.widthAnchor.constraint(equalToConstant: 200),
                                      contactPersonTextField.heightAnchor.constraint(equalToConstant: 32)])
         
@@ -173,7 +175,7 @@ struct DonateView {
                                      mobileLabel.heightAnchor.constraint(equalToConstant: 32)])
         
         NSLayoutConstraint.activate([mobileTextField.topAnchor.constraint(equalTo: contactPersonTextField.bottomAnchor, constant: 3),
-                                     mobileTextField.leadingAnchor.constraint(equalTo: mobileLabel.trailingAnchor, constant: 5),
+                                     mobileTextField.leadingAnchor.constraint(equalTo: contactPersonTextField.leadingAnchor),
                                      mobileTextField.widthAnchor.constraint(equalToConstant: 200),
                                      mobileTextField.heightAnchor.constraint(equalToConstant: 32)])
         
@@ -184,7 +186,7 @@ struct DonateView {
 
 
     //  Image of the donated item..
-    let itemDonatedImage: UIImageView = ImageViewBlueprint().layoutImage(imageNameIs: "meeting")
+    let itemDonatedImage: UIImageView = ImageViewBlueprint().layoutImage(imageNameIs: "camera")
     
     // Brief Description text view
     let briefDescription: UITextView = TextViewBlueprint().layoutTextView()
@@ -215,5 +217,28 @@ struct DonateView {
 
     //  Submit button
     let submitButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs:"Submit")
+    
+    
+    // the function below will cycle through all textfields in the current view, and implement the bottom-border style textfield
+    func underlineTextField(){
+        
+        let textFieldsInView:[UITextField] = [addressTextField, dateTextField, timeTextField, contactPersonTextField, mobileTextField]
+        
+        for txtFld in textFieldsInView {
+            
+            let aLayer:CALayer = CALayer()
+            aLayer.frame = CGRect(x: 0,
+                                  y: txtFld.frame.height - 1.0,
+                                  width: txtFld.frame.width,
+                                  height: 1)
+            aLayer.borderWidth = 1.0
+            aLayer.borderColor = appGreenColor(alphaIs: 1).cgColor
+            txtFld.layer.masksToBounds = true
+            txtFld.layer.addSublayer(aLayer)    // tadaaaaa
+            
+        }
+        
+    }
+    
 
 }

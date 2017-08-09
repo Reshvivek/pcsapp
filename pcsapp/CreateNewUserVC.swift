@@ -8,24 +8,47 @@
 
 import UIKit
 
-class CreateNewUserVC: UIViewController, UIScrollViewDelegate{
+class CreateNewUserVC: UIViewController {
 
     private let instanceOfCreateNewUserView = CreateNewUserView()
     
         override func loadView(){
-        
             super.loadView()
             
-            view.addSubview(instanceOfCreateNewUserView.layoutNewUserInfoBox())
-            view.addSubview(instanceOfCreateNewUserView.newUserButton)
-            
-            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[newUserInfoBox]-|", options:[], metrics:[:], views: ["newUserInfoBox":instanceOfCreateNewUserView.newUserInfoBox]))
-            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|-260-[newUserInfoBox(280)]", options:[], metrics:[:], views: ["newUserInfoBox":instanceOfCreateNewUserView.newUserInfoBox]))
-            
-            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-60-[newUserButton]-60-|", options:[], metrics:[:], views: ["newUserButton":instanceOfCreateNewUserView.newUserButton]))
-            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:[newUserInfoBox]-24-[newUserButton(48)]", options:[], metrics:[:], views: ["newUserButton":instanceOfCreateNewUserView.newUserButton, "newUserInfoBox":instanceOfCreateNewUserView.newUserInfoBox]))
-            
+            self.navigationItem.title = "Create New User"
+                view.addSubview(instanceOfCreateNewUserView.newUserMainImage)
+                        view.addSubview(instanceOfCreateNewUserView.layoutNewUserInfoBox())
+                            view.addSubview(instanceOfCreateNewUserView.newUserButton)
+
+                            applyCreateNewUserConstraints()
             
     }
+    
+    override func viewDidLayoutSubviews() {
+        instanceOfCreateNewUserView.underlineTextField()
+    }
+    
+    private func applyCreateNewUserConstraints() {
         
+        let views:[String:Any] = ["newUserMainImage":instanceOfCreateNewUserView.newUserMainImage,
+                                  "newUserInfoBox":instanceOfCreateNewUserView.newUserInfoBox,
+                                  "newUserButton":instanceOfCreateNewUserView.newUserButton
+        ]
+    
+        //  the next line will ensure the top of the view is aligned to the bottom of the navigation bar..
+        NSLayoutConstraint.activate([instanceOfCreateNewUserView.newUserMainImage.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 44)])
+        
+        //  now we layout UI controls using Visual Formal Language as usual..
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat:"H:|-[newUserMainImage]-|", options:[], metrics:[:], views:views))
+        
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat:"H:|-[newUserInfoBox]-|", options:[], metrics:[:], views:views))
+        
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat:"H:|-60-[newUserButton]-60-|", options:[], metrics:[:], views:views))
+        
+        NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat:"V:[newUserMainImage(128)]-26-[newUserInfoBox(280)]-26-[newUserButton(48)]", options:[], metrics:[:], views:views))
+        
+
+
+    }
+    
 }

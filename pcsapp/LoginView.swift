@@ -25,11 +25,10 @@ struct LoginView {
             
             loginView.translatesAutoresizingMaskIntoConstraints = false
             loginView.addSubview(usernameTextField)
-            usernameTextField.backgroundColor = appGreenColor(alphaIs: 0.13)
-            usernameTextField.placeholder = "U s e r n a m e"
             
             loginView.addSubview(passwordTextField)
-            passwordTextField.placeholder = "P a s s w o r d"
+            passwordTextField.isSecureTextEntry = true
+            
             loginView.addSubview(loginButton)
             
             loginView.addSubview(forgotPasswordButton)
@@ -42,35 +41,58 @@ struct LoginView {
             
             loginView.addSubview(donateGuestButton)
             
+            
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-25-[username]-25-|", options: [], metrics: [:], views: views))
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-25-[password]-25-|", options: [], metrics: [:], views: views))
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-25-[login]-25-|", options: [], metrics: [:], views: views))
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-25-[forgotPassword]-25-|", options: [], metrics: [:], views: views))
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-25-[createUser]-25-|", options: [], metrics: [:], views: views))
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-25-[donateGuest]-25-|", options: [], metrics: [:], views: views))
-            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|-155-[username(33)]-22-[password(==username)]-30-[login(48)]-30-[forgotPassword(==username)]-30-[createUser(==username)]-78-[donateGuest(48)]", options: [], metrics: [:], views: views))
+            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|-155-[username(40)]-12-[password(==username)]-20-[login(48)]-30-[forgotPassword(==username)]-30-[createUser(==username)]-78-[donateGuest(48)]", options: [], metrics: [:], views: views))
 
             return loginView
         }
-    
 
-//  username textfield
-    let usernameTextField: UITextField = TextFieldBlueprint().layoutTextField()
-    
-//  password textfield
-    let passwordTextField: UITextField = TextFieldBlueprint().layoutTextField()
-    
-//  login button
-    let loginButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs: "Login")
-    
-// forgot password option button
-    let forgotPasswordButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs: "Forgot Password?")
 
-// create user option button
-    let createUserButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs: "Create New User")
+    //  background image
+        let backgroundImage:UIImageView = ImageViewBlueprint().layoutImage(imageNameIs: "logo")
+    
+    //  username textfield
+        let usernameTextField: UITextField = TextFieldBlueprint().layoutTextField()
+    
+    //  password textfield
+        let passwordTextField: UITextField = TextFieldBlueprint().layoutTextField()
+        
+    //  login button
+        let loginButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs: "Login")
+        
+    // forgot password option button
+        let forgotPasswordButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs: "Forgot Password?")
 
-// donate as guest button
-    let donateGuestButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs: "Donate As Guest")
+    // create user option button
+        let createUserButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs: "Create New User")
+
+    // donate as guest button
+        let donateGuestButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs: "Donate As Guest")
+    
+    
+    // the function below will cycle through all textfields in the current view, and implement the bottom-border style textfield
+    func underlineTextField(){
+        
+        let textFieldsInView:[UITextField] = [usernameTextField, passwordTextField]
+        
+        for txtFld in textFieldsInView {
+            
+            let aLayer:CALayer = CALayer()
+            aLayer.frame = CGRect(x:0, y:txtFld.frame.height - 1.0, width:txtFld.frame.width, height:1)
+            aLayer.borderWidth = 1.0
+            aLayer.borderColor = appGreenColor(alphaIs: 1).cgColor
+            txtFld.layer.masksToBounds = true
+            txtFld.layer.addSublayer(aLayer)    // tadaaaaa
+            
+        }
+        
+    }
 
  
 }
