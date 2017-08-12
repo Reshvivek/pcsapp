@@ -33,6 +33,10 @@ class LoginVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         
         self.navigationController?.navigationBar.isHidden = false
+        
+        for vu in instanceOfLoginView.loginView.subviews {
+            vu.resignFirstResponder()
+        }
 
     }
     
@@ -42,7 +46,6 @@ class LoginVC: UIViewController {
 
         self.navigationController?.navigationBar.isHidden = true
         
-        instanceOfLoginView.backgroundImage.becomeFirstResponder()
         instanceOfLoginView.usernameTextField.text = ""
         instanceOfLoginView.usernameTextField.attributedPlaceholder = NSAttributedString(string: "U s e r n a m e", attributes: [NSForegroundColorAttributeName : appGreenColor(alphaIs: 0.66)])
         
@@ -61,7 +64,7 @@ class LoginVC: UIViewController {
     
     
 //MARK:- loadView Functions
-    
+
         func applyLoginVCConstraints() {
             
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:[bgImage(100)]", options: [], metrics: [:], views: ["bgImage":instanceOfLoginView.backgroundImage]))

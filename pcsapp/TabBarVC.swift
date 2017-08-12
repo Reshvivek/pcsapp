@@ -10,18 +10,25 @@ import UIKit
 
 class TabBarVC: UITabBarController {
 
-    private let instanceOfDonateVC = DonateVC()
-    private let instanceOfAboutUsVC = AboutUsVC()
+    private let instanceOfTabs:[UIViewController] = [DonateVC(),AboutUsVC()]
     
     override func loadView() {
         super.loadView()
         
-        instanceOfDonateVC.tabBarItem = UITabBarItem(title: "Donate", image: UIImage(named:"donate"), tag: 2)
-        instanceOfAboutUsVC.tabBarItem = UITabBarItem(title: "About", image: UIImage(named: "about"), tag: 3)
+        self.tabBar.isTranslucent = false
         
-        self.viewControllers = [instanceOfDonateVC, instanceOfAboutUsVC]
+        instanceOfTabs[0].tabBarItem = UITabBarItem(title: "Donate", image: UIImage(named:"donate"), tag: 2)
+            instanceOfTabs[1].tabBarItem = UITabBarItem(title: "About", image: UIImage(named: "about"), tag: 3)
+        
+        self.viewControllers = [instanceOfTabs[0],instanceOfTabs[1]]
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style:UIBarButtonItemStyle.plain, target: self, action: #selector(goToSettings))
 
     }
 
+    func goToSettings() {
+        
+        self.navigationController?.pushViewController(SettingsVC(), animated: true)
+    }
 
 }

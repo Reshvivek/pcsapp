@@ -24,6 +24,7 @@
 		2AB187C21F281DD300C20C91 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB187C11F281DD300C20C91 /* TabBarVC.swift */; };
 		2AB9F5F21F1B30C0007430FD /* DonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB9F5F11F1B30C0007430FD /* DonateView.swift */; };
 		2AB9F5F51F1B3994007430FD /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB9F5F41F1B3994007430FD /* Commons.swift */; };
+		2AE691AC1F3E72A800B3DE84 /* ImagePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE691AB1F3E72A800B3DE84 /* ImagePickerVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,10 +64,11 @@
 		2AA949951F13589C0098E900 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = pcsapp/LoginVC.swift; sourceTree = "<group>"; };
 		2AA952DF1F2745B20097E4A7 /* AboutUs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutUs.swift; path = pcsapp/AboutUs.swift; sourceTree = "<group>"; };
 		2AA952E11F2745D60097E4A7 /* AboutUsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutUsVC.swift; path = pcsapp/AboutUsVC.swift; sourceTree = "<group>"; };
-		2AB0E9D51F393B5D003381F0 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsVC.swift; path = pcsapp/SettingsVC.swift; sourceTree = "<group>"; };
+		2AB0E9D51F393B5D003381F0 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsVC.swift; path = pcsapp/SettingsVC.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		2AB187C11F281DD300C20C91 /* TabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarVC.swift; path = pcsapp/TabBarVC.swift; sourceTree = "<group>"; };
 		2AB9F5F11F1B30C0007430FD /* DonateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DonateView.swift; path = pcsapp/DonateView.swift; sourceTree = "<group>"; };
 		2AB9F5F41F1B3994007430FD /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Commons.swift; path = pcsapp/Commons.swift; sourceTree = "<group>"; };
+		2AE691AB1F3E72A800B3DE84 /* ImagePickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePickerVC.swift; path = pcsapp/ImagePickerVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				2AB187C11F281DD300C20C91 /* TabBarVC.swift */,
+				2AE691AB1F3E72A800B3DE84 /* ImagePickerVC.swift */,
 				2A0A36441F1CB038003D9A2C /* DonateVC.swift */,
 				2AA952E11F2745D60097E4A7 /* AboutUsVC.swift */,
 			);
@@ -337,6 +340,7 @@
 				2AA952E01F2745B20097E4A7 /* AboutUs.swift in Sources */,
 				2AA952E21F2745D60097E4A7 /* AboutUsVC.swift in Sources */,
 				2A180A821F19B49600F2F2EA /* CreateNewUserVC.swift in Sources */,
+				2AE691AC1F3E72A800B3DE84 /* ImagePickerVC.swift in Sources */,
 				2AB0E9D61F393B5D003381F0 /* SettingsVC.swift in Sources */,
 				2A180A801F19B29700F2F2EA /* CreateNewUserView.swift in Sources */,
 				2A0A36451F1CB038003D9A2C /* DonateVC.swift in Sources */,

@@ -22,6 +22,8 @@ class DonateView {
             
             // starting with the image view of the donated item -user will use camera-
             donateScrollView.addSubview(itemDonatedImage)
+            itemDonatedImage.contentMode = UIViewContentMode.center
+            itemDonatedImage.isUserInteractionEnabled = true
             itemDonatedImage.alpha = 1
             itemDonatedImage.backgroundColor = appGreenColor(alphaIs: 1)
                 NSLayoutConstraint.activate([itemDonatedImage.topAnchor.constraint(equalTo: donateScrollView.topAnchor, constant: 10),
@@ -186,10 +188,10 @@ class DonateView {
 
 
     //  Image of the donated item..
-    let itemDonatedImage: UIImageView = ImageViewBlueprint().layoutImage(imageNameIs: "camera")
+    let itemDonatedImage: UIImageView = ImageViewBlueprint().layoutImage(imageNameIs: "placeholder")
     
     // Brief Description text view
-    let briefDescription: UITextView = TextViewBlueprint().layoutTextView()
+    let briefDescription: UITextView = TextViewBlueprint().aTextView
   
     //  Pickup Details controls
     let pickupDetailsLabel: UILabel = LabelBlueprint().layoutLabel(theTextIs: "Pickup Details")
@@ -213,12 +215,11 @@ class DonateView {
     let mobileTextField: UITextField = TextFieldBlueprint().layoutTextField()
     
     //  Additional Notes controls
-    let additionalNotesTextView: UITextView = TextViewBlueprint().layoutTextView()
+    let additionalNotesTextView: UITextView = TextViewBlueprint().aTextView
 
     //  Submit button
     let submitButton: UIButton = ButtonBlueprint().layoutButton(theTitleIs:"Submit")
-    
-    
+ 
     // the function below will cycle through all textfields in the current view, and implement the bottom-border style textfield
     func underlineTextField(){
         

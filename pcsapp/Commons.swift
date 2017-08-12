@@ -14,7 +14,7 @@ func appGreenColor(alphaIs: CGFloat) -> UIColor {    // call this func to set an
     
 }
 
-func appCustomFont() -> UIFont {    //  call this func to set the font for all controls that has involves font property in the app
+func appCustomFont() -> UIFont {    //  call this func to set the font for all controls that involves font property in the app
 
     return UIFont(name: "Avenir-Book", size: 17)!
     
@@ -22,7 +22,7 @@ func appCustomFont() -> UIFont {    //  call this func to set the font for all c
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//  use blueprints below to implement all controls in your app (textfields, labels, buttons, etc..)
+//  use blueprints below to implement all UI controls in your app (textfields, labels, buttons, etc..)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -63,23 +63,6 @@ struct TextFieldBlueprint {
 }
 
 
-struct TextViewBlueprint {
-    
-    private let aTxtVu: UITextView! = UITextView()
-
-    func layoutTextView() -> UITextView {
-    
-            aTxtVu.translatesAutoresizingMaskIntoConstraints = false
-        
-            aTxtVu.backgroundColor = appGreenColor(alphaIs: 0.25)
-            aTxtVu.textColor = appGreenColor(alphaIs: 1)
-            aTxtVu.font = appCustomFont()
-        
-        return aTxtVu
-    }
-}
-
-
 struct ButtonBlueprint {    //  use this struct to build BUTTON objects in your view
     
     private let aButton: UIButton! = UIButton()
@@ -112,4 +95,21 @@ struct ImageViewBlueprint {
 
         return anImage
     }
+}
+
+
+struct TextViewBlueprint {
+    
+    let aTextView: UITextView = {
+        
+        let aTxtVu = UITextView()
+        
+        aTxtVu.translatesAutoresizingMaskIntoConstraints = false
+        aTxtVu.backgroundColor = appGreenColor(alphaIs: 0.25)
+        aTxtVu.textColor = appGreenColor(alphaIs: 1)
+        aTxtVu.font = appCustomFont()
+        
+        return aTxtVu
+    }()
+
 }
