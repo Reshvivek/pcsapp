@@ -101,7 +101,9 @@ class LoginVC: UIViewController {
         
         func donateAsGuest() {
             
-            self.navigationController?.pushViewController(TabBarVC(), animated: false)
+            
+            AppDelegate.tabItemShow = true
+        self.navigationController?.pushViewController(TabBarVC(), animated: false)
         }
 
 }

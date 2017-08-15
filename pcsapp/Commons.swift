@@ -4,7 +4,7 @@
 //
 //  Created by Yalla Code on 16/7/17.
 //  Copyright © 2017 Yalla Code. All rights reserved.
-//ttt33
+// 
 
 import UIKit
 
@@ -18,6 +18,21 @@ func appCustomFont() -> UIFont {    //  call this func to set the font for all c
 
     return UIFont(name: "Avenir-Book", size: 17)!
     
+}
+
+//Text gray color
+
+func appGrayColor() -> UIColor {    // call this func to set any control color to PatienceCS green color, pass only desired alpha value
+    return UIColor(red:149/255, green:152/255, blue:154/255, alpha: 1)
+    
+}
+
+// Text Gray color
+
+func appTextFont() -> UIFont {    //  call this func to set the font for all controls that has involves font property in the app
+    
+    let textFont: UIFont = UIFont(name: "Avenir-Book", size: 13)!
+    return textFont
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
