@@ -2,9 +2,6 @@
 //  DonateVC.swift
 //  pcsapp
 //
-//  Created by Yalla Code on 17/7/17.
-//  Copyright © 2017 Yalla Code. All rights reserved.
-//
 
 import UIKit
 
@@ -61,7 +58,7 @@ class DonateVC: UIViewController {
   
     func itemDonatedImageTapped() {    //  will show the photo library
         
-        self.present(instanceOfImagePickerVC, animated: false, completion: nil)
+        self.present(instanceOfImagePickerVC, animated: true, completion: nil)
         
     }
     

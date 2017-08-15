@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsVC: UIViewController {
     
-    private let instanceOfSettingsView = SettingsView()
+    fileprivate let instanceOfSettingsView = SettingsView()
     
     override func loadView() {
         super.loadView()
@@ -36,15 +36,29 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         return 2
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath)
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        if section == 0 {
+            instanceOfSettingsView.settingsCustomTable.register(UserSettingsHeader.self, forHeaderFooterViewReuseIdentifier:"customHeader")
+            
+        } else if section == 1 {
+            
+            instanceOfSettingsView.settingsCustomTable.register(AppSettingsHeader.self, forHeaderFooterViewReuseIdentifier:"customHeader")
+            
+        }
+        
+        return tableView.dequeueReusableHeaderFooterView(withIdentifier: "customHeader")
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableHeaderFooterView(withIdentifier: "customHeader")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        instanceOfSettingsView.settingsCustomTable.register(SettingsCustomCell.self, forCellReuseIdentifier:"customCell")
+        
+        return tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath)
     }
     
 }
